@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zepensieve - Accel Atoms Pitch Deck</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; overflow: hidden; color: #1e293b; }
+        .deck-container { width: 100vw; height: 100vh; position: relative; }
+        .slide { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: white; display: flex; flex-direction: column; opacity: 0; transform: translateX(100%); transition: all 0.4s ease-in-out; padding: 60px 80px; box-shadow: 0 4px 25px rgba(0,0,0,0.08); }
+        .slide.active { opacity: 1; transform: translateX(0); }
+        .slide.prev { transform: translateX(-100%); }
+        .slide-header { font-size: 2.2rem; font-weight: 600; margin-bottom: 20px; text-align: center; color: #0f172a; line-height: 1.2; }
+        .slide-subheader { font-size: 1.2rem; font-weight: 500; color: #64748b; text-align: center; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .founder-profile { display: flex; align-items: center; gap: 50px; max-width: 1100px; }
+        .founder-image { width: 180px; height: 180px; border-radius: 12px; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; font-weight: 600; box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3); }
+        .founder-details { flex: 1; }
+        .founder-name { font-size: 2.2rem; font-weight: 600; color: #0f172a; margin-bottom: 8px; }
+        .founder-title { font-size: 1.1rem; color: #64748b; margin-bottom: 25px; font-weight: 500; }
+        .key-points { list-style: none; padding: 0; }
+        .key-points li { background: #f8fafc; padding: 18px 24px; margin: 12px 0; border-radius: 8px; border-left: 3px solid #3b82f6; font-size: 1rem; line-height: 1.6; color: #334155; }
+        .key-points strong { color: #0f172a; }
+        .product-showcase { width: 100%; max-width: 900px; text-align: center; }
+        .demo-container { background: #ffffff; border-radius: 16px; padding: 40px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); border: 1px solid #e2e8f0; margin-bottom: 30px; }
+        .demo-header { font-size: 1.4rem; font-weight: 600; margin-bottom: 25px; color: #0f172a; }
+        .dual-context-demo { display: flex; gap: 30px; margin-bottom: 25px; }
+        .context-panel { flex: 1; background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); border-radius: 12px; padding: 20px; border: 1px solid #cbd5e1; }
+        .context-label { font-weight: 600; margin-bottom: 12px; color: #475569; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .ai-response { background: white; border-radius: 8px; padding: 16px; font-size: 0.95rem; line-height: 1.5; color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,0.06); font-style: italic; }
+        .demo-link { display: inline-flex; align-items: center; gap: 8px; background: #3b82f6; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; margin-top: 15px; }
+        .demo-link:hover { background: #2563eb; transform: translateY(-1px); }
+        .pain-points-grid { display: flex; justify-content: space-between; width: 100%; max-width: 1000px; gap: 40px; }
+        .pain-point { flex: 1; text-align: center; padding: 30px 20px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        .pain-icon { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); }
+        .pain-title { font-size: 1.2rem; font-weight: 600; color: #0f172a; margin-bottom: 12px; }
+        .pain-description { color: #64748b; line-height: 1.5; font-size: 0.95rem; }
+        .convergent-market-bars { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 40px 0; }
+        .bar-item { text-align: center; }
+        .bar-label { font-size: 0.9rem; color: #64748b; margin-bottom: 8px; font-weight: 500; }
+        .bar-value { font-size: 1.5rem; font-weight: 700; color: #0f172a; padding: 10px 20px; background: #f1f5f9; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .bar-item.total .bar-value { background: #fbbf24; color: #0f172a; border-color: #f59e0b;}
+        .plus-sign, .equals-sign { font-size: 2rem; color: #94a3b8; }
+        .india-stats { display: flex; justify-content: space-around; margin-top: 40px; background: #f8fafc; border-radius: 12px; padding: 30px; border: 1px solid #e2e8f0; }
+        .stat-item { text-align: center; flex: 1; }
+        .stat-number { font-size: 2rem; font-weight: 700; color: #3b82f6; display: block; }
+        .stat-label { color: #64748b; font-size: 0.9rem; margin-top: 4px; font-weight: 500; }
+        .matrix-grid { width: 100%; max-width: 800px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10px; margin: 30px auto; position: relative; }
+        .quadrant { padding: 20px; border-radius: 12px; background: white; border: 1px solid #e2e8f0; text-align: center; }
+        .quadrant-label { font-weight: 600; color: #64748b; font-size: 0.9rem; margin-bottom: 15px; }
+        .competitor { background: #f1f5f9; color: #475569; padding: 8px 12px; border-radius: 6px; margin: 8px 0; font-weight: 500; }
+        .quadrant.zepensieve-quadrant { background: #f0f9ff; border: 2px solid #3b82f6; }
+        .competitor.zepensieve { background: #3b82f6; color: white; font-weight: 700; box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        .matrix-axes { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; }
+        .matrix-axes::before, .matrix-axes::after { content: ''; position: absolute; background: #cbd5e1; }
+        .matrix-axes::before { top: 50%; left: 10px; right: 10px; height: 1px; transform: translateY(-0.5px); }
+        .matrix-axes::after { left: 50%; top: 10px; bottom: 10px; width: 1px; transform: translateX(-0.5px); }
+        .axis-label { position: absolute; font-weight: 500; background: rgba(255, 255, 255, 0.9); color: #64748b; font-size: 0.9rem; }
+        .x-axis-label { bottom: -40px; left: 50%; transform: translateX(-50%); }
+        .y-axis-label { left: -140px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+        .status-overview { width: 100%; max-width: 1000px; }
+        .milestone-timeline { display: flex; justify-content: space-between; align-items: center; margin: 40px 0; position: relative; }
+        .milestone-timeline::before { content: ''; position: absolute; top: 25px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%); }
+        .milestone { flex: 1; text-align: center; position: relative; z-index: 1; }
+        .milestone-dot { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; margin: 0 auto 15px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); }
+        .milestone.completed .milestone-dot { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4); }
+        .milestone-label { font-size: 0.9rem; color: #64748b; font-weight: 500; line-height: 1.3; }
+        .gtm-strategy { background: white; border-radius: 12px; padding: 30px; margin-top: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        .gtm-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; color: #0f172a; text-align: center; }
+        .funding-overview { width: 100%; max-width: 900px; text-align: center; }
+        .funding-amount { font-size: 3rem; font-weight: 700; color: #3b82f6; margin: 20px 0; }
+        .funding-allocation { display: flex; justify-content: space-around; margin: 40px 0; gap: 30px; }
+        .allocation-item { flex: 1; background: white; border-radius: 12px; padding: 25px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        .allocation-percentage { font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
+        .alloc-product { color: #3b82f6; } .alloc-growth { color: #8b5cf6; } .alloc-validation { color: #10b981; }
+        .allocation-title { font-weight: 600; margin-bottom: 8px; color: #0f172a; }
+        .allocation-detail { font-size: 0.9rem; color: #64748b; line-height: 1.4; }
+        .why-accel { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 1px solid #0ea5e9; border-radius: 12px; padding: 25px; margin-top: 30px; }
+        .why-accel-title { font-size: 1.2rem; font-weight: 600; color: #0369a1; margin-bottom: 10px; }
+        .why-accel-text { color: #0f172a; font-style: italic; line-height: 1.5; }
+        .navigation { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 1000; }
+        .nav-btn { padding: 12px 24px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-weight: 500; color: #334155; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .nav-btn:hover { background: #3b82f6; color: white; border-color: #3b82f6; transform: translateY(-1px); }
+        .slide-indicator { position: absolute; top: 30px; right: 30px; color: #64748b; font-weight: 500; font-size: 0.9rem; }
+        .logo { position: absolute; top: 30px; left: 30px; font-size: 1.5rem; font-weight: 700; color: #3b82f6; }
+    </style>
+</head>
+<body>
+    <div class="deck-container">
+        <div class="logo">Zepensieve</div>
+        
+        <!-- Slide 1: The Founder -->
+        <div class="slide active">
+            <div class="slide-indicator">1/7</div>
+            <div class="slide-header">The AI Architect: Building What I Needed</div>
+            <div class="slide-content">
+                <div class="founder-profile">
+                    <div class="founder-image">PS</div>
+                    <div class="founder-details">
+                        <div class="founder-name">Prateek Singh</div>
+                        <div class="founder-title">Solo Founder & AI Director</div>
+                        <ul class="key-points">
+                            <li><strong>I Am User 0:</strong> Built Zepensieve as the relationship tool I needed. </li>
+                            <li><strong>Proven AI Director:</strong> Architectures AI systems that build venture-scale companies with extreme velocity—MVP to market in 48 hours.</li>
+                            <li><strong>Domain Authority:</strong> Deep personal insight into relationship challenges + industrial AI experience delivering multi-crore impact.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Solution -->
+        <div class="slide">
+            <div class="slide-indicator">2/7</div>
+            <div class="slide-header">The World's First Relationship Gym</div>
+            <div class="slide-subheader">This isn't therapy, which is a 'hospital' for when things are broken. This is a private 'gym' for building the skills to make good relationships great.</div>
+            <div class="slide-content">
+                 <ul class="key-points">
+                    <li><strong>Patent-Pending Dual-Context AI:</strong> The first AI that privately understands both partners to guide them toward mutual happiness.</li>
+                    <li><strong>Science-Backed Coaching:</strong> Grounded in proven therapeutic frameworks (Gottman, EFT, CBT)—not generic chatbot responses.</li>
+                    <li><strong>Privacy-First Design:</strong> Each partner's context remains completely private while enabling breakthrough couple-aware guidance.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: The Market Pain -->
+        <div class="slide">
+            <div class="slide-indicator">3/7</div>
+            <div class="slide-header">The "Hospital" Model is Broken for 200 Million Indian Couples</div>
+            <div class="slide-content">
+                <div class="pain-points-grid">
+                    <div class="pain-point">
+                        <div class="pain-icon">₹</div>
+                        <div class="pain-title">Financially Impossible</div>
+                        <div class="pain-description">Therapy costs <strong>₹50,000+ annually</strong>—pricing out 95% of Indian couples who earn less than ₹10 lakhs per year.</div>
+                    </div>
+                    <div class="pain-point">
+                        <div class="pain-icon">🤐</div>
+                        <div class="pain-title">Culturally Stigmatized</div>
+                        <div class="pain-description">Therapy is seen as a 'hospital' for broken relationships, creating deep cultural shame and preventing couples from seeking help.</div>
+                    </div>
+                    <div class="pain-point">
+                        <div class="pain-icon">⚠️</div>
+                        <div class="pain-title">Dangerously Flawed</div>
+                        <div class="pain-description">Generic AI becomes a dangerous "sycophant" creating echo chambers, while existing apps fail on privacy and cultural understanding.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Market Opportunity -->
+        <div class="slide">
+            <div class="slide-indicator">4/7</div>
+            <div class="slide-header">$43+ Billion Convergent Market with India as the Fastest-Growing Opportunity</div>
+            <div class="slide-content">
+                <div class="market-overview">
+                    <div class="convergent-market-bars">
+                        <div class="bar-item"><div class="bar-label">Online Therapy</div><div class="bar-value">$26.6B</div></div>
+                        <div class="plus-sign">+</div>
+                        <div class="bar-item"><div class="bar-label">AI Companions</div><div class="bar-value">$9.5B</div></div>
+                        <div class="plus-sign">+</div>
+                        <div class="bar-item"><div class="bar-label">Coaching Industry</div><div class="bar-value">$7.3B</div></div>
+                        <div class="equals-sign">=</div>
+                        <div class="bar-item total"><div class="bar-label">Our Convergent Market</div><div class="bar-value total-value">$43.4B</div></div>
+                    </div>
+                    <div class="india-stats">
+                        <div class="stat-item"><span class="stat-number">₹1.42B</span><div class="stat-label">India Digital Relationship Market</div></div>
+                        <div class="stat-item"><span class="stat-number">10.65%</span><div class="stat-label">CAGR Growth Rate</div></div>
+                        <div class="stat-item"><span class="stat-number">1.9%</span><div class="stat-label">Current Penetration<br>(vs 17.9% US)</div></div>
+                        <div class="stat-item"><span class="stat-number">293%</span><div class="stat-label">User Growth<br>(5 Years)</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Competition -->
+        <div class="slide">
+            <div class="slide-indicator">5/7</div>
+            <div class="slide-header">Creating a New Category: The Relationship Gym</div>
+            <div class="slide-content">
+                <div style="width: 100%; max-width: 900px; text-align: center; position: relative;">
+                     <div class="matrix-axes"><div class="axis-label x-axis-label">Individual Focus → Couples Focus</div><div class="axis-label y-axis-label">Generic AI / Human-Led → Specialized, Scalable AI</div></div>
+                    <div class="matrix-grid">
+                        <div class="quadrant q1"><div class="quadrant-label">Individual / Generic AI</div><div class="competitor">Character.AI</div><div class="competitor">Replika</div></div>
+                        <div class="quadrant q2"><div class="quadrant-label">Individual / Specialized</div><div class="competitor">Wysa</div></div>
+                        <div class="quadrant q3"><div class="quadrant-label">Couples / Human-Led</div><div class="competitor">BetterHelp</div><div class="competitor">ReGain</div></div>
+                        <div class="quadrant q4 zepensieve-quadrant"><div class="quadrant-label">Couples / Specialized AI</div><div class="competitor zepensieve">Zepensieve 🎯</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Current Status -->
+        <div class="slide">
+            <div class="slide-indicator">6/7</div>
+            <div class="slide-header">Patent Filed. Demo Live. Ready to Scale.</div>
+            <div class="slide-content">
+                <div class="status-overview">
+                    <div class="milestone-timeline">
+                        <div class="milestone completed"><div class="milestone-dot">✓</div><div class="milestone-label">MVP Built<br>(48 Hours)</div></div>
+                        <div class="milestone completed"><div class="milestone-dot">⚖️</div><div class="milestone-label">Patent Filed<br>(India)</div></div>
+                        <div class="milestone"><div class="milestone-dot">α</div><div class="milestone-label">Alpha Launch<br>(Month 3)</div></div>
+                        <div class="milestone"><div class="milestone-dot">🎯</div><div class="milestone-label">1K Paying Users<br>(Month 12)</div></div>
+                        <div class="milestone"><div class="milestone-dot">🚀</div><div class="milestone-label">Series A Ready<br>(Month 18)</div></div>
+                    </div>
+                    <div class="gtm-strategy">
+                        <div class="gtm-title">Freemium Model Built for Trust & Viral Growth</div>
+                        <ul class="key-points">
+                            <li><strong>Free/BYOK Tiers:</strong> Build context and scale our user base at zero marginal cost.</li>
+                            <li><strong>Premium Tier (₹1,999/month):</strong> Advanced dual-context coaching with "Upgrade One, Benefit Both" viral mechanism.</li>
+                            <li><strong>18-Month Vision:</strong> Alpha → 1,000 paying couples → US patent secured → Series A with proven unit economics.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: The Ask -->
+        <div class="slide">
+            <div class="slide-indicator">7/7</div>
+            <div class="slide-header">₹8 Crores to Build India's First Relationship Gym</div>
+            <div class="slide-content">
+                <div class="funding-overview">
+                    <div class="funding-amount">₹8 Crores ($1M)</div>
+                    <div class="subtitle">18-Month Runway to Series A Readiness</div>
+                    <div class="funding-allocation">
+                        <div class="allocation-item"><div class="allocation-percentage alloc-product">40%</div><div class="allocation-title">Product & Engineering</div><div class="allocation-detail">2 senior engineers, native mobile apps, global patent filing, AI infra scaling</div></div>
+                        <div class="allocation-item"><div class="allocation-percentage alloc-growth">30%</div><div class="allocation-title">Growth & Marketing</div><div class="allocation-detail">Targeted customer acquisition, cultural localization, prove unit economics with 1,000 paying users</div></div>
+                        <div class="allocation-item"><div class="allocation-percentage alloc-validation">30%</div><div class="allocation-title">Validation & Ops</div><div class="allocation-detail">Clinical studies, legal/compliance, founder runway, safety protocols</div></div>
+                    </div>
+                    <div class="why-accel">
+                        <div class="why-accel-title">Why Accel Atoms?</div>
+                        <div class="why-accel-text">"Beyond capital, we need your proven expertise in scaling AI-native B2C platforms. With Accel, we're not just building a company—we're creating the category-defining 'Relationship Gym' for India and the world."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()">← Previous</button>
+            <button class="nav-btn" onclick="nextSlide()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        function showSlide(n) { slides.forEach((slide, index) => { slide.classList.remove('active', 'prev'); if (index === n) { slide.classList.add('active'); } else if (index < n) { slide.classList.add('prev'); } }); }
+        function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; showSlide(currentSlide); }
+        function previousSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; showSlide(currentSlide); }
+        document.addEventListener('keydown', function(e) { if (e.key === 'ArrowRight' || e.key === ' ') { nextSlide(); } else if (e.key === 'ArrowLeft') { previousSlide(); } });
+        document.querySelector('.demo-link').addEventListener('click', function(e) { e.preventDefault(); alert('This would open the live proof of concept: https://your-live-pegasus-mvp-url.com/login?demo=accel'); });
+    </script>
+</body>
+</html>
