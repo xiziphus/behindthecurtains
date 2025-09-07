@@ -104,7 +104,15 @@
              text-align: left; /* keeps list items left aligned */
         }
         
-        .footer { text-align: center; padding-top: 40px; }
+        .footer { 
+            text-align: center; 
+            padding-top: 40px;
+            width: 100%;
+        }
+        .footer p {
+            text-align: center;
+            margin: 0 auto;
+        }
         @media (max-width: 900px) { .grid-layout { grid-template-columns: 1fr; } .slide { padding: 40px 20px; } }
         @media (max-width: 768px) { h1 { font-size: 2.5rem; } .hero .subtitle { font-size: 1.2rem; } .cta-buttons { flex-direction: column; } }
     </style>
@@ -250,15 +258,14 @@
                                 <p><strong>Status:</strong> Feature-complete MVP is live and demonstrable. In final debugging for closed-Alpha launch.</p>
                                 <p><strong>The Ask:</strong> We are seeking mentorship, network access, and seed funding to launch our Alpha, secure our IP globally, and acquire our first 1,000 users.</p>
                             </div>
+                            <div className="cta-buttons">
+                                <a href="pitch_deck.html" className="cta-button primary">📊 View Full Pitch Deck</a>
+                            </div>
                             <div className="footer">
                                 <p>Thank you for your time. Let's build the future.</p>
                                 <p><strong>Prateek Singh</strong></p>
                             </div>
                         </div>
-                    </div>
-                    <div className="footer">
-                                <p>Thank you for your time. Let's build the future.</p>
-                                <p><strong>Prateek Singh</strong></p>
                     </div>
                 </div>
             );
