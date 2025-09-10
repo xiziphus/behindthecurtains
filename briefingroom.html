@@ -150,7 +150,7 @@
                         availHeight: screen.availHeight,
                         colorDepth: screen.colorDepth,
                         pixelDepth: screen.pixelDepth
-                    },
+                    }, 
                     timezone: {
                         name: Intl.DateTimeFormat().resolvedOptions().timeZone,
                         offset: new Date().getTimezoneOffset()
@@ -237,21 +237,21 @@
 👤 <b>VISITOR PROFILE</b>
 📍 Location: <code>Briefing Room</code>
 🕐 Entry Time: <code>${new Date(data.timestamp).toLocaleString()}</code>
-🛡️ Session: <code>${this.sessionId.slice(-8)}</code>
+<!-- 🛡️ Session: <code>${this.sessionId.slice(-8)}</code> -->
 
 🌍 <b>GEOGRAPHIC INTEL</b>
 🗺️ ${locationData?.city || 'Unknown'}, ${locationData?.region || ''} ${locationData?.country || 'Unknown'}
-🌐 IP: <code>${locationData?.ip || 'Hidden'}</code>
+<!-- 🌐 IP: <code>${locationData?.ip || 'Hidden'}</code> -->
 ⏰ Timezone: <code>${locationData?.timezone || deviceInfo.timezone.name}</code>
-🏢 ISP: <code>${locationData?.org || 'Unknown'}</code>
+<!-- 🏢 ISP: <code>${locationData?.org || 'Unknown'}</code> -->
 
 💻 <b>TECHNICAL PROFILE</b>
 🖥️ OS: <code>${deviceInfo.os}</code>
 🌐 Browser: <code>${deviceInfo.browser}</code>
-📱 Device: <code>${deviceInfo.isMobile ? 'Mobile' : 'Desktop'}</code>
+<!-- 📱 Device: <code>${deviceInfo.isMobile ? 'Mobile' : 'Desktop'}</code> -->
 📺 Display: <code>${deviceInfo.screen.width}x${deviceInfo.screen.height}</code>
 🎯 Window: <code>${data.viewport.width}x${data.viewport.height}</code>
-🧠 Processing: <code>${deviceInfo.hardwareConcurrency || 'Unknown'} cores</code>
+<!-- 🧠 Processing: <code>${deviceInfo.hardwareConcurrency || 'Unknown'} cores</code> -->
 💾 Memory: <code>${deviceInfo.deviceMemory ? deviceInfo.deviceMemory + 'GB' : 'Unknown'}</code>
 
 ${networkInfo ? `🌐 <b>CONNECTION DETAILS</b>
