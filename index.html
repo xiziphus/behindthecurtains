@@ -2,35 +2,547 @@
 <html lang="en">
     <!-- psst! not here. next room. -->
 
-<script>
-// Quick test
-fetch('https://api.telegram.org/bot8380178073:AAGEoX9cf5jHE5M5eva52gciSoceSwPE8A4/sendMessage', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        chat_id: '1287570221',
-        text: '🔮 Palantír Watcher awakens! The seeing stone now watches over the realm of Zepensieve...'
-    })
-});
-</script>
-
-
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:6516845,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Founder's Manifesto</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BTH0YYDWYE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BTH0YYDWYE');
+    </script>
+    
+    <!-- Hotjar Tracking Code -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:6516845,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Palantír Watcher Analytics -->
+    <script>
+        class PalantirWatcher {
+            constructor() {
+                this.botToken = '8380178073:AAGEoX9cf5jHE5M5eva52gciSoceSwPE8A4';
+                this.chatId = '1287570221';
+                this.sessionId = this.getOrCreateSessionId();
+                this.pageLoadTime = new Date().toISOString();
+                this.webhookUrl = null; // Optional: Zapier/Make.com webhook
+                
+                this.init();
+            }
+
+            getOrCreateSessionId() {
+                let sessionId = sessionStorage.getItem('zep_session');
+                if (!sessionId) {
+                    sessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    sessionStorage.setItem('zep_session', sessionId);
+                }
+                return sessionId;
+            }
+
+            init() {
+                this.trackPageLoad();
+                this.setupEventListeners();
+                this.detectDevTools();
+                this.trackScrollDepth();
+                this.trackBase64Interaction();
+            }
+
+            async getIPLocation() {
+                try {
+                    const response = await fetch('https://ipapi.co/json/');
+                    return await response.json();
+                } catch (error) {
+                    console.error('IP location failed:', error);
+                    return null;
+                }
+            }
+
+            getDeviceInfo() {
+                return {
+                    platform: navigator.platform,
+                    userAgent: navigator.userAgent,
+                    language: navigator.language,
+                    languages: navigator.languages,
+                    cookieEnabled: navigator.cookieEnabled,
+                    doNotTrack: navigator.doNotTrack,
+                    onLine: navigator.onLine,
+                    hardwareConcurrency: navigator.hardwareConcurrency,
+                    deviceMemory: navigator.deviceMemory,
+                    maxTouchPoints: navigator.maxTouchPoints,
+                    screen: {
+                        width: screen.width,
+                        height: screen.height,
+                        availWidth: screen.availWidth,
+                        availHeight: screen.availHeight,
+                        colorDepth: screen.colorDepth,
+                        pixelDepth: screen.pixelDepth
+                    },
+                    timezone: {
+                        name: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                        offset: new Date().getTimezoneOffset()
+                    },
+                    os: this.detectOS(),
+                    browser: this.detectBrowser(),
+                    isMobile: this.isMobileDevice()
+                };
+            }
+
+            getNetworkInfo() {
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                return connection ? {
+                    effectiveType: connection.effectiveType,
+                    downlink: connection.downlink,
+                    rtt: connection.rtt,
+                    saveData: connection.saveData,
+                    type: connection.type
+                } : null;
+            }
+
+            detectOS() {
+                const userAgent = navigator.userAgent;
+                if (userAgent.includes('Windows')) return 'Windows';
+                if (userAgent.includes('Mac OS')) return 'macOS';
+                if (userAgent.includes('Linux')) return 'Linux';
+                if (userAgent.includes('Android')) return 'Android';
+                if (userAgent.includes('iOS')) return 'iOS';
+                return 'Unknown';
+            }
+
+            detectBrowser() {
+                const userAgent = navigator.userAgent;
+                if (userAgent.includes('Chrome') && !userAgent.includes('Edg')) return 'Chrome';
+                if (userAgent.includes('Firefox')) return 'Firefox';
+                if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) return 'Safari';
+                if (userAgent.includes('Edg')) return 'Edge';
+                if (userAgent.includes('Opera')) return 'Opera';
+                return 'Unknown';
+            }
+
+            isMobileDevice() {
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            }
+
+            async trackPageLoad() {
+                const locationData = await this.getIPLocation();
+                const deviceInfo = this.getDeviceInfo();
+                const networkInfo = this.getNetworkInfo();
+                
+                const data = {
+                    type: 'page_load',
+                    page: window.location.pathname,
+                    url: window.location.href,
+                    title: document.title,
+                    referrer: document.referrer,
+                    userAgent: navigator.userAgent,
+                    sessionId: this.sessionId,
+                    timestamp: this.pageLoadTime,
+                    viewport: {
+                        width: window.innerWidth,
+                        height: window.innerHeight
+                    },
+                    location: locationData,
+                    device: deviceInfo,
+                    network: networkInfo
+                };
+
+                this.sendDetailedTelegramReport(data, locationData, deviceInfo, networkInfo);
+                this.storeLocalData(data);
+                
+                gtag('event', 'page_load_detailed', {
+                    page_path: data.page,
+                    city: locationData?.city,
+                    country: locationData?.country
+                });
+            }
+
+            sendDetailedTelegramReport(data, locationData, deviceInfo, networkInfo) {
+                const message = `
+🔮 <b>PALANTÍR WATCHER ALERT</b>
+━━━━━━━━━━━━━━━━━━━━━
+
+👤 <b>VISITOR DETAILS</b>
+📍 Page: <code>${data.page}</code>
+🕐 Time: <code>${new Date(data.timestamp).toLocaleString()}</code>
+🛡️ Session: <code>${this.sessionId.slice(-8)}</code>
+
+🌍 <b>LOCATION</b>
+🗺️ ${locationData?.city || 'Unknown'}, ${locationData?.region || ''} ${locationData?.country || 'Unknown'}
+🌐 IP: <code>${locationData?.ip || 'Hidden'}</code>
+⏰ Timezone: <code>${locationData?.timezone || deviceInfo.timezone.name}</code>
+🏢 ISP: <code>${locationData?.org || 'Unknown'}</code>
+
+💻 <b>DEVICE</b>
+🖥️ OS: <code>${deviceInfo.os}</code>
+🌐 Browser: <code>${deviceInfo.browser}</code>
+📱 Type: <code>${deviceInfo.isMobile ? 'Mobile' : 'Desktop'}</code>
+📺 Screen: <code>${deviceInfo.screen.width}x${deviceInfo.screen.height}</code>
+🎯 Viewport: <code>${data.viewport.width}x${data.viewport.height}</code>
+🧠 Cores: <code>${deviceInfo.hardwareConcurrency || 'Unknown'}</code>
+💾 Memory: <code>${deviceInfo.deviceMemory ? deviceInfo.deviceMemory + 'GB' : 'Unknown'}</code>
+
+${networkInfo ? `🌐 <b>NETWORK</b>
+📶 Type: <code>${networkInfo.effectiveType || 'Unknown'}</code>
+⬇️ Speed: <code>${networkInfo.downlink ? networkInfo.downlink + ' Mbps' : 'Unknown'}</code>
+⚡ Latency: <code>${networkInfo.rtt ? networkInfo.rtt + 'ms' : 'Unknown'}</code>` : ''}
+
+🔗 <b>ENTRY</b>
+🚪 From: <code>${data.referrer || 'Direct'}</code>
+🗣️ Language: <code>${deviceInfo.language}</code>
+🍪 Cookies: <code>${deviceInfo.cookieEnabled ? 'Enabled' : 'Disabled'}</code>
+🕵️ Tracking: <code>${deviceInfo.doNotTrack ? 'Blocked' : 'Allowed'}</code>
+
+━━━━━━━━━━━━━━━━━━━━━
+<i>The seeing stone reveals all...</i>
+                `.trim();
+
+                this.sendToTelegram(message);
+            }
+
+            setupEventListeners() {
+                document.addEventListener('click', (e) => {
+                    this.trackClick(e);
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        const link = e.target.tagName === 'A' ? e.target : e.target.closest('a');
+                        this.trackPageTransition(link.href);
+                    }
+                });
+
+                document.addEventListener('visibilitychange', () => {
+                    this.trackVisibilityChange();
+                });
+
+                window.addEventListener('beforeunload', () => {
+                    this.trackTimeOnPage();
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    this.detectKeyboardShortcuts(e);
+                });
+            }
+
+            trackClick(event) {
+                const elementInfo = {
+                    tag: event.target.tagName,
+                    text: event.target.textContent?.substring(0, 50),
+                    className: event.target.className,
+                    id: event.target.id
+                };
+
+                if (this.isImportantClick(elementInfo)) {
+                    const data = {
+                        type: 'important_click',
+                        element: elementInfo,
+                        coordinates: { x: event.clientX, y: event.clientY },
+                        sessionId: this.sessionId,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    const clickMessage = `
+⚔️ <b>IMPORTANT ACTION DETECTED</b>
+━━━━━━━━━━━━━━━━━━━━━
+
+🎯 <b>ACTION</b>: Click on ${elementInfo.tag}
+📝 <b>Text</b>: "${elementInfo.text}"
+📍 <b>Position</b>: (${event.clientX}, ${event.clientY})
+🕐 <b>Time</b>: ${new Date().toLocaleString()}
+🛡️ <b>Session</b>: ${this.sessionId.slice(-8)}
+
+<i>The visitor shows interest...</i>
+                    `.trim();
+
+                    this.sendToTelegram(clickMessage);
+                    this.storeLocalData(data);
+                    
+                    gtag('event', 'important_click', {
+                        element_type: elementInfo.tag,
+                        element_text: elementInfo.text
+                    });
+                }
+            }
+
+            isImportantClick(element) {
+                const importantKeywords = ['briefing', 'demo', 'experience', 'watch', 'pitch'];
+                const text = element.text?.toLowerCase() || '';
+                const className = element.className?.toLowerCase() || '';
+                
+                return importantKeywords.some(keyword => 
+                    text.includes(keyword) || className.includes(keyword)
+                ) || element.tag === 'A';
+            }
+
+            trackPageTransition(destination) {
+                const data = {
+                    type: 'page_transition',
+                    from: window.location.pathname,
+                    to: destination,
+                    sessionId: this.sessionId,
+                    timestamp: new Date().toISOString()
+                };
+
+                this.sendToTelegram(`🧭 Journey continues: ${data.from} → ${destination}`);
+                this.storeLocalData(data);
+                
+                gtag('event', 'page_transition', {
+                    from_page: data.from,
+                    to_page: destination
+                });
+            }
+
+            trackScrollDepth() {
+                let maxScroll = 0;
+                let checkpoints = [25, 50, 75, 90, 100];
+                let reached = [];
+
+                window.addEventListener('scroll', () => {
+                    const scrollPercent = Math.round(
+                        (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+                    );
+
+                    if (scrollPercent > maxScroll) maxScroll = scrollPercent;
+
+                    checkpoints.forEach(checkpoint => {
+                        if (scrollPercent >= checkpoint && !reached.includes(checkpoint)) {
+                            reached.push(checkpoint);
+                            
+                            if (checkpoint >= 75) {
+                                this.sendToTelegram(`📜 Deep study of the texts: ${checkpoint}% scroll depth reached`);
+                            }
+                            
+                            gtag('event', 'scroll_depth', {
+                                scroll_percentage: checkpoint
+                            });
+                        }
+                    });
+                });
+            }
+
+            detectDevTools() {
+                let devToolsOpen = false;
+                
+                setInterval(() => {
+                    if (window.outerHeight - window.innerHeight > 200 && !devToolsOpen) {
+                        devToolsOpen = true;
+                        
+                        const devMessage = `
+🏰 <b>FORTRESS BREACH DETECTED</b>
+━━━━━━━━━━━━━━━━━━━━━
+
+🔧 <b>METHOD</b>: Developer Tools Opened
+📏 <b>Detection</b>: Height change (${window.outerHeight - window.innerHeight}px difference)
+🕐 <b>Time</b>: ${new Date().toLocaleString()}
+🛡️ <b>Session</b>: ${this.sessionId.slice(-8)}
+
+⚠️ <i>Someone seeks to peer behind the veil...</i>
+                        `.trim();
+                        
+                        this.sendToTelegram(devMessage);
+                        gtag('event', 'dev_tools_opened', { method: 'height_change' });
+                    } else if (window.outerHeight - window.innerHeight <= 200 && devToolsOpen) {
+                        devToolsOpen = false;
+                    }
+                }, 1000);
+            }
+
+            detectKeyboardShortcuts(event) {
+                const shortcuts = [
+                    { combo: 'F12', desc: 'Dev Tools (F12)' },
+                    { combo: 'Ctrl+Shift+I', desc: 'Dev Tools (Ctrl+Shift+I)' },
+                    { combo: 'Ctrl+U', desc: 'View Source (Ctrl+U)' },
+                    { combo: 'Ctrl+Shift+C', desc: 'Inspect Element' }
+                ];
+
+                shortcuts.forEach(shortcut => {
+                    if (this.matchesShortcut(event, shortcut.combo)) {
+                        const shortcutMessage = `
+⌨️ <b>KEYBOARD SPELL DETECTED</b>
+━━━━━━━━━━━━━━━━━━━━━
+
+🔧 <b>Shortcut</b>: ${shortcut.desc}
+🕐 <b>Time</b>: ${new Date().toLocaleString()}
+🛡️ <b>Session</b>: ${this.sessionId.slice(-8)}
+📍 <b>Page</b>: ${window.location.pathname}
+
+🧙‍♂️ <i>The visitor knows the ancient ways...</i>
+                        `.trim();
+
+                        this.sendToTelegram(shortcutMessage);
+                        gtag('event', 'keyboard_shortcut', { shortcut: shortcut.desc });
+                    }
+                });
+            }
+
+            matchesShortcut(event, combo) {
+                if (combo === 'F12') return event.key === 'F12';
+                
+                const parts = combo.split('+');
+                const modifiers = {
+                    'Ctrl': event.ctrlKey || event.metaKey,
+                    'Shift': event.shiftKey,
+                    'Alt': event.altKey
+                };
+
+                return parts.every(part => {
+                    return modifiers[part] || event.key === part;
+                });
+            }
+
+            trackBase64Interaction() {
+                document.addEventListener('selectionchange', () => {
+                    const selection = window.getSelection();
+                    const selectedText = selection.toString();
+                    const base64Text = "VGhlIHRydXRoIGF3YWl0cyB5b3UgYmVoaW5kIHRoZSBjdXJ0YWlucyBpbiB0aGUgbmV4dCByb29t";
+                    
+                    if (selectedText.includes(base64Text) || selectedText.includes("VGhlIH")) {
+                        const base64Message = `
+🔍 <b>ANCIENT TEXT EXAMINED</b>
+━━━━━━━━━━━━━━━━━━━━━
+
+📜 <b>Action</b>: Base64 text selected
+✂️ <b>Length</b>: ${selectedText.length} characters
+🕐 <b>Time</b>: ${new Date().toLocaleString()}
+🛡️ <b>Session</b>: ${this.sessionId.slice(-8)}
+📍 <b>Page</b>: ${window.location.pathname}
+
+🧙‍♂️ <i>The seeker studies the encoded wisdom...</i>
+                        `.trim();
+                        
+                        this.sendToTelegram(base64Message);
+                        gtag('event', 'base64_selected');
+                    }
+                });
+
+                document.addEventListener('copy', (e) => {
+                    const selectedText = window.getSelection().toString();
+                    const base64Pattern = /VGhlIH[A-Za-z0-9+/]+=*/;
+                    
+                    if (base64Pattern.test(selectedText)) {
+                        const copyMessage = `
+📋 <b>ANCIENT SCROLL COPIED</b>
+━━━━━━━━━━━━━━━━━━━━━
+
+📜 <b>Action</b>: Base64 copied to clipboard
+📏 <b>Length</b>: ${selectedText.length} characters
+🕐 <b>Time</b>: ${new Date().toLocaleString()}
+🛡️ <b>Session</b>: ${this.sessionId.slice(-8)}
+
+⚠️ <i>The encoded message has been taken...</i>
+                        `.trim();
+                        
+                        this.sendToTelegram(copyMessage);
+                        gtag('event', 'base64_copied');
+                    }
+                });
+
+                const originalAtob = window.atob;
+                window.atob = function(str) {
+                    if (str.includes('VGhlIH') || str === 'VGhlIHRydXRoIGF3YWl0cyB5b3UgYmVoaW5kIHRoZSBjdXJ0YWlucyBpbiB0aGUgbmV4dCByb29t') {
+                        const decodeMessage = `
+🔓 <b>CIPHER BROKEN</b>
+━━━━━━━━━━━━━━━━━━━━━
+
+🧩 <b>Action</b>: Base64 decoding attempted
+🔑 <b>Method</b>: atob() function used
+🕐 <b>Time</b>: ${new Date().toLocaleString()}
+🛡️ <b>Session</b>: ${window.palantirWatcher?.sessionId.slice(-8)}
+💬 <b>Decoded</b>: "${originalAtob(str)}"
+
+🏆 <i>The puzzle has been solved!</i>
+                        `.trim();
+                        
+                        window.palantirWatcher?.sendToTelegram(decodeMessage);
+                        gtag('event', 'base64_decoded');
+                    }
+                    return originalAtob(str);
+                };
+            }
+
+            trackTimeOnPage() {
+                const timeSpent = new Date() - new Date(this.pageLoadTime);
+                const minutes = Math.round(timeSpent / 60000);
+                
+                if (minutes >= 2) {
+                    this.sendToTelegram(`⏱️ Extended Visit: ${minutes} minutes on page`);
+                    gtag('event', 'extended_visit', { duration_minutes: minutes });
+                }
+            }
+
+            trackVisibilityChange() {
+                const data = {
+                    type: 'visibility_change',
+                    hidden: document.hidden,
+                    sessionId: this.sessionId,
+                    timestamp: new Date().toISOString()
+                };
+
+                this.storeLocalData(data);
+            }
+
+            async sendToTelegram(message) {
+                try {
+                    await fetch(`https://api.telegram.org/bot${this.botToken}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: this.chatId,
+                            text: message,
+                            parse_mode: 'HTML'
+                        })
+                    });
+                } catch (error) {
+                    console.error('Telegram error:', error);
+                }
+            }
+
+            storeLocalData(data) {
+                let stored = JSON.parse(localStorage.getItem('zep_analytics') || '[]');
+                stored.push(data);
+                
+                if (stored.length > 100) {
+                    stored = stored.slice(-100);
+                }
+                
+                localStorage.setItem('zep_analytics', JSON.stringify(stored));
+            }
+
+            exportData() {
+                const data = localStorage.getItem('zep_analytics');
+                if (data) {
+                    const blob = new Blob([data], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `zepensieve-analytics-${new Date().toISOString().split('T')[0]}.json`;
+                    a.click();
+                }
+            }
+        }
+
+        window.addEventListener('load', () => {
+            window.palantirWatcher = new PalantirWatcher();
+        });
+
+        function trackCustomEvent(eventName, data = {}) {
+            gtag('event', eventName, data);
+            if (window.palantirWatcher) {
+                window.palantirWatcher.sendToTelegram(`📊 Custom Event: ${eventName}`);
+            }
+        }
+    </script>
+    
     <style>
         :root { --bg-color: #000000; --text-color: #EAEAEA; --primary-color: #FAFAFA; --card-bg: #1A1A1A; --border-color: #333; }
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap');
@@ -50,7 +562,6 @@ fetch('https://api.telegram.org/bot8380178073:AAGEoX9cf5jHE5M5eva52gciSoceSwPE8A
         .final-call { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 900; margin-top: 60px; }
         .footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border-color); }
         
-        /* Button styling */
         .cta-button {
             display: inline-block;
             font-family: 'Inter', sans-serif;
@@ -72,7 +583,6 @@ fetch('https://api.telegram.org/bot8380178073:AAGEoX9cf5jHE5M5eva52gciSoceSwPE8A
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
         
-        /* Hidden message styling */
         .hidden-message {
             font-size: 1.1rem;
             color: #000000;
@@ -88,13 +598,11 @@ fetch('https://api.telegram.org/bot8380178073:AAGEoX9cf5jHE5M5eva52gciSoceSwPE8A
 </head>
 <body>
     <div class="container">
-        <!-- HERO -->
         <div class="hero">
             <h1>My Thesis: A New Way to Build.</h1>
             <p>The following is not a pitch for a product. It's a demonstration of a new model for building companies.</p>
         </div>
 
-        <!-- THE MANIFESTO -->
         <div>
             <h2>The Founder's Unfair Advantage</h2>
             <p>My superpower is not writing code. It is <strong class="highlight">directing a workforce of AI agents</strong> to execute a complex product vision with extreme velocity and zero capital.</p>
@@ -102,7 +610,6 @@ fetch('https://api.telegram.org/bot8380178073:AAGEoX9cf5jHE5M5eva52gciSoceSwPE8A
             <p>Zepensieve is the first masterpiece of this methodology. It is the proof.</p>
         </div>
 
-        <!-- THE PROOF OF CONCEPT -->
         <div>
             <h2>My First Creation: Zepensieve</h2>
             <p>Zepensieve is the antidote to the dangerous "Sycophant Effect" of modern AI. I discovered that all current AI coaches are echo chambers, validating one side of a story and making empathy impossible. Zepensieve is the first AI coach built to understand both sides of a relationship while guaranteeing privacy. It's an ethical AI designed to build bridges, not walls.</p>
@@ -113,7 +620,6 @@ fetch('https://api.telegram.org/bot8380178073:AAGEoX9cf5jHE5M5eva52gciSoceSwPE8A
             </ul>
         </div>
         
-        <!-- THE PARTNERSHIP -->
         <div>
             <h2>The Partnership</h2>
             <p>The product is built. The methodology is proven. The vision is clear. I am not looking for a boss; I am looking for a partner and mentors to help scale this vision to the world.</p>
@@ -126,7 +632,6 @@ fetch('https://api.telegram.org/bot8380178073:AAGEoX9cf5jHE5M5eva52gciSoceSwPE8A
             </div>
         </div>
 
-        <!-- FOOTER -->
         <div class="footer">
             <p><strong>Prateek Singh</strong></p>
             <!-- The invisible breadcrumb. Select the "empty" space below to reveal it. -->
