@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zepensieve - The Comprehensive Relationship Wellness Platform</title>
+    <title>Zepensieve - Complete Relationship Wellness Platform</title>
     <style>
         * {
             margin: 0;
@@ -36,7 +36,7 @@
             opacity: 0;
             transform: translateX(100%);
             transition: all 0.4s ease-in-out;
-            padding: 60px 80px;
+            padding: 50px 70px;
             box-shadow: 0 4px 25px rgba(0,0,0,0.08);
         }
 
@@ -50,9 +50,9 @@
         }
 
         .slide-header {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 600;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-align: center;
             color: #0f172a;
             line-height: 1.2;
@@ -66,24 +66,47 @@
             align-items: center;
         }
 
+        .key-points {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .key-points li {
+            background: #f8fafc;
+            padding: 16px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 3px solid #3b82f6;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #334155;
+        }
+
+        .key-points strong {
+            color: #0f172a;
+        }
+
         /* Founder Profile - Slide 1 */
         .founder-profile {
             display: flex;
             align-items: center;
-            gap: 50px;
-            max-width: 1100px;
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%;
         }
 
         .founder-image {
-            width: 180px;
-            height: 180px;
+            width: 160px;
+            height: 160px;
             border-radius: 12px;
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 600;
             box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
         }
@@ -93,122 +116,100 @@
         }
 
         .founder-name {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 600;
             color: #0f172a;
             margin-bottom: 8px;
         }
 
         .founder-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #64748b;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
-        .key-points {
-            list-style: none;
-            padding: 0;
-        }
-
-        .key-points li {
-            background: #f8fafc;
-            padding: 18px 24px;
-            margin: 12px 0;
-            border-radius: 8px;
-            border-left: 3px solid #3b82f6;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #334155;
-        }
-
-        .key-points strong {
-            color: #0f172a;
-        }
-
-        /* Platform Vision - Slide 2 */
-        .platform-showcase {
-            width: 100%;
-            max-width: 1000px;
-            text-align: center;
-        }
-
+        /* Platform Vision */
         .vision-container {
             background: #ffffff;
             border-radius: 16px;
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.12);
             border: 1px solid #e2e8f0;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 900px;
         }
 
         .platform-evolution {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 30px 0;
+            margin: 25px 0;
         }
 
         .evolution-stage {
             flex: 1;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             position: relative;
         }
 
         .evolution-stage:not(:last-child)::after {
             content: '→';
             position: absolute;
-            right: -15px;
+            right: -10px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #3b82f6;
             font-weight: bold;
         }
 
         .stage-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 15px;
+            font-size: 1.3rem;
+            margin: 0 auto 12px;
         }
 
         .stage-title {
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: #0f172a;
+            font-size: 0.9rem;
         }
 
         .stage-description {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #64748b;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .coaxing-demo {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             border-radius: 12px;
-            padding: 25px;
-            margin: 25px 0;
+            padding: 20px;
+            margin: 20px 0;
             border: 2px solid #3b82f6;
         }
 
         .demo-header {
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #0369a1;
+            text-align: center;
         }
 
         .before-after {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
 
@@ -219,9 +220,9 @@
 
         .demo-label {
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #475569;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -229,8 +230,8 @@
         .standard-response {
             background: #f8fafc;
             border-radius: 8px;
-            padding: 12px;
-            font-size: 0.9rem;
+            padding: 10px;
+            font-size: 0.85rem;
             line-height: 1.4;
             color: #64748b;
             border: 1px solid #cbd5e1;
@@ -239,8 +240,8 @@
         .coaxing-response {
             background: white;
             border-radius: 8px;
-            padding: 12px;
-            font-size: 0.9rem;
+            padding: 10px;
+            font-size: 0.85rem;
             line-height: 1.4;
             color: #334155;
             border: 1px solid #3b82f6;
@@ -250,71 +251,71 @@
         .vs-divider {
             font-weight: 700;
             color: #64748b;
-            font-size: 1rem;
-            min-width: 30px;
+            font-size: 0.9rem;
+            min-width: 25px;
         }
 
-        /* Market Convergence - Slide 3 */
-        .convergence-overview {
-            width: 100%;
-            max-width: 1000px;
-            text-align: center;
-        }
-
+        /* Market Forces */
         .convergence-forces {
             display: flex;
             justify-content: space-around;
-            margin: 40px 0;
-            gap: 30px;
+            margin: 30px 0;
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
         }
 
         .force-item {
             flex: 1;
             background: white;
             border-radius: 12px;
-            padding: 25px 20px;
+            padding: 20px 15px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid #e2e8f0;
         }
 
         .force-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 15px;
+            font-size: 1.3rem;
+            margin: 0 auto 12px;
         }
 
         .force-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #0f172a;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            text-align: center;
         }
 
         .force-description {
             color: #64748b;
-            line-height: 1.5;
-            font-size: 0.9rem;
+            line-height: 1.4;
+            font-size: 0.85rem;
+            text-align: center;
         }
 
         .market-stats {
             background: #f8fafc;
             border-radius: 12px;
-            padding: 25px;
-            margin-top: 30px;
+            padding: 20px;
+            margin-top: 25px;
             border: 1px solid #e2e8f0;
+            width: 100%;
+            max-width: 900px;
         }
 
         .stats-grid {
             display: flex;
             justify-content: space-around;
-            gap: 20px;
+            gap: 15px;
         }
 
         .stat-item {
@@ -323,7 +324,7 @@
         }
 
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #3b82f6;
             display: block;
@@ -331,85 +332,78 @@
 
         .stat-label {
             color: #64748b;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             margin-top: 4px;
             font-weight: 500;
         }
 
-        /* Problem Analysis - Slide 4 */
-        .problem-analysis {
-            width: 100%;
-            max-width: 1000px;
-        }
-
+        /* Problem Grid */
         .problem-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 30px 0;
+            gap: 25px;
+            margin: 25px 0;
+            width: 100%;
+            max-width: 900px;
         }
 
         .problem-category {
             background: white;
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid #e2e8f0;
         }
 
         .problem-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
         }
 
         .problem-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #0f172a;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .problem-description {
             color: #64748b;
-            line-height: 1.5;
-            font-size: 0.9rem;
+            line-height: 1.4;
+            font-size: 0.85rem;
         }
 
         .solution-preview {
             background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
             border: 2px solid #10b981;
             border-radius: 12px;
-            padding: 25px;
-            margin-top: 25px;
+            padding: 20px;
+            margin-top: 20px;
             text-align: center;
+            width: 100%;
+            max-width: 900px;
         }
 
         .solution-title {
             font-weight: 600;
             color: #059669;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        /* Competition Matrix - Slide 5 */
-        .competition-section {
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-        }
-
+        /* Competition Matrix */
         .matrix-container {
-            width: 600px;
-            height: 400px;
+            width: 500px;
+            height: 350px;
             position: relative;
-            margin: 30px auto;
+            margin: 25px auto;
             background: white;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
@@ -419,70 +413,69 @@
             position: absolute;
             font-weight: 600;
             color: #64748b;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
-        .x-axis { bottom: -35px; left: 50%; transform: translateX(-50%); }
-        .y-axis { left: -140px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+        .x-axis { bottom: -30px; left: 50%; transform: translateX(-50%); }
+        .y-axis { left: -120px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
 
         .competitor-dot {
             position: absolute;
-            width: 100px;
-            height: 60px;
+            width: 90px;
+            height: 50px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-align: center;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .zepensieve { 
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            top: 30px; right: 30px;
+            top: 25px; right: 25px;
             border: 3px solid #fbbf24;
             box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
         }
-        .therapy-apps { background: #8b5cf6; top: 30px; left: 30px; }
-        .couples-apps { background: #f59e0b; top: 30px; left: 180px; }
-        .generic-ai { background: #6b7280; bottom: 30px; left: 30px; }
-        .wellness-apps { background: #ef4444; bottom: 30px; left: 180px; }
+        .therapy-apps { background: #8b5cf6; top: 25px; left: 25px; }
+        .couples-apps { background: #f59e0b; top: 25px; left: 150px; }
+        .generic-ai { background: #6b7280; bottom: 25px; left: 25px; }
+        .wellness-apps { background: #ef4444; bottom: 25px; left: 150px; }
 
         .differentiation-box {
             background: #f0f9ff;
             border: 1px solid #bae6fd;
             border-radius: 8px;
-            padding: 20px;
-            margin-top: 25px;
+            padding: 18px;
+            margin-top: 20px;
             text-align: left;
+            width: 100%;
+            max-width: 900px;
         }
 
         .differentiation-title {
             color: #0369a1;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
-        /* Platform Roadmap - Slide 6 */
-        .roadmap-overview {
-            width: 100%;
-            max-width: 1000px;
-        }
-
+        /* Roadmap */
         .phase-timeline {
             display: flex;
             justify-content: space-between;
-            margin: 40px 0;
+            margin: 30px 0;
             position: relative;
+            width: 100%;
+            max-width: 900px;
         }
 
         .phase-timeline::before {
             content: '';
             position: absolute;
-            top: 30px;
+            top: 25px;
             left: 10%;
             right: 10%;
             height: 2px;
@@ -494,12 +487,12 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            max-width: 180px;
+            max-width: 150px;
         }
 
         .phase-dot {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
@@ -507,9 +500,9 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            margin: 0 auto 15px;
+            margin: 0 auto 12px;
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .phase-item.current .phase-dot {
@@ -519,68 +512,67 @@
 
         .phase-title {
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: #0f172a;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .phase-description {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #64748b;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         .current-status {
             background: white;
             border-radius: 12px;
-            padding: 25px;
-            margin-top: 30px;
+            padding: 20px;
+            margin-top: 25px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid #e2e8f0;
+            width: 100%;
+            max-width: 900px;
         }
 
         .status-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #0f172a;
             text-align: center;
         }
 
-        /* Funding Strategy - Slide 7 */
-        .funding-overview {
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-        }
-
+        /* Funding */
         .funding-amount {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #3b82f6;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         .funding-allocation {
             display: flex;
             justify-content: space-around;
-            margin: 40px 0;
-            gap: 30px;
+            margin: 30px 0;
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
         }
 
         .allocation-item {
             flex: 1;
             background: white;
             border-radius: 12px;
-            padding: 25px 20px;
+            padding: 20px 15px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid #e2e8f0;
         }
 
         .allocation-percentage {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            text-align: center;
         }
 
         .alloc-platform { color: #3b82f6; }
@@ -589,50 +581,55 @@
 
         .allocation-title {
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: #0f172a;
+            text-align: center;
         }
 
         .allocation-detail {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #64748b;
-            line-height: 1.4;
+            line-height: 1.3;
+            text-align: center;
         }
 
         .gym-analogy {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             border: 1px solid #0ea5e9;
             border-radius: 12px;
-            padding: 25px;
-            margin-top: 30px;
+            padding: 20px;
+            margin-top: 25px;
+            width: 100%;
+            max-width: 900px;
         }
 
         .gym-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #0369a1;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .gym-text {
             color: #0f172a;
             font-style: italic;
-            line-height: 1.5;
+            line-height: 1.4;
+            font-size: 0.9rem;
         }
 
         /* Navigation */
         .navigation {
             position: absolute;
-            bottom: 30px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 15px;
+            gap: 12px;
             z-index: 1000;
         }
 
         .nav-btn {
-            padding: 12px 24px;
+            padding: 10px 20px;
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
@@ -652,27 +649,27 @@
 
         .slide-indicator {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 25px;
+            right: 25px;
             color: #64748b;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .logo {
             position: absolute;
-            top: 30px;
-            left: 30px;
-            font-size: 1.5rem;
+            top: 25px;
+            left: 25px;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #3b82f6;
         }
 
         .subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #64748b;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-weight: 500;
         }
     </style>
@@ -697,45 +694,197 @@
                             <li><strong>Full-Spectrum Vision:</strong> Not just building an app, but creating the essential platform that connects relationship wellness, from daily AI coaching to professional therapy when needed</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Platform Vision -->
+        <div class="slide">
+            <div class="slide-indicator">2/7</div>
+            <div class="slide-header">The Essential Platform for Relationship Wellness: AI-First, Human-Connected</div>
+            <div class="slide-content">
+                <div class="vision-container">
+                    <div class="platform-evolution">
+                        <div class="evolution-stage">
+                            <div class="stage-icon">🤖</div>
+                            <div class="stage-title">AI Coaching</div>
+                            <div class="stage-description">Privacy-preserving relationship intelligence available 24/7</div>
+                        </div>
+                        <div class="evolution-stage">
+                            <div class="stage-icon">🔗</div>
+                            <div class="stage-title">Smart Matching</div>
+                            <div class="stage-description">AI-powered therapist matching based on communication style & needs</div>
+                        </div>
+                        <div class="evolution-stage">
+                            <div class="stage-icon">👩‍⚕️</div>
+                            <div class="stage-title">Professional Care</div>
+                            <div class="stage-description">Seamless connection to licensed therapists with intelligent intake</div>
+                        </div>
+                    </div>
+                    
+                    <div class="coaxing-demo">
+                        <div class="demo-header">Core Innovation: Relationship-Aware AI Coaching</div>
+                        <div class="before-after">
+                            <div class="demo-section">
+                                <div class="demo-label">Generic AI</div>
+                                <div class="standard-response">"It sounds frustrating when your partner withdraws."</div>
+                            </div>
+                            <div class="vs-divider">vs</div>
+                            <div class="demo-section">
+                                <div class="demo-label">Zepensieve Intelligence</div>
+                                <div class="coaxing-response">"Sometimes when people feel overwhelmed, they need space to process emotions. What might help them feel safer to re-engage?"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="key-points">
+                    <li><strong>Privacy-Preserving Architecture:</strong> Patent-pending system that understands relationship dynamics without compromising individual privacy</li>
+                    <li><strong>Therapeutic Integration:</strong> The gym, not the hospital—building strength and awareness before crisis, connecting to professional care when needed</li>
+                    <li><strong>Intelligent Intake Solution:</strong> Eliminates the costly "cold start" problem in therapy through AI-generated therapist briefs</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Market Convergence -->
+        <div class="slide">
+            <div class="slide-indicator">3/7</div>
+            <div class="slide-header">The Inevitable Convergence: Three Market Forces Creating Our Moment</div>
+            <div class="slide-content">
+                <div class="convergence-forces">
+                    <div class="force-item">
+                        <div class="force-icon">🧠</div>
+                        <div class="force-title">AI Normalization</div>
+                        <div class="force-description">ChatGPT eliminated the stigma of "talking to AI"—millions now comfortable seeking AI guidance for personal matters</div>
+                    </div>
+                    <div class="force-item">
+                        <div class="force-icon">💚</div>
+                        <div class="force-title">Wellness Revolution</div>
+                        <div class="force-description">Mental/emotional health now core priority for Millennials & Gen Z—proactive relationship care is mainstream</div>
+                    </div>
+                    <div class="force-item">
+                        <div class="force-icon">📱</div>
+                        <div class="force-title">Telehealth Precedent</div>
+                        <div class="force-description">Pandemic permanently normalized digital healthcare—expectation for convenient, on-demand professional support</div>
+                    </div>
+                </div>
+                
+                <div class="market-stats">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">$27B+</span>
+                            <div class="stat-label">Convergent Market Opportunity</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">₹1.42B</span>
+                            <div class="stat-label">India Digital Relationship Market</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10.65%</span>
+                            <div class="stat-label">CAGR Growth Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1.9%</span>
+                            <div class="stat-label">Current Penetration vs 17.9% US</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Problem Analysis -->
+        <div class="slide">
+            <div class="slide-indicator">4/7</div>
+            <div class="slide-header">The Market is Failing: Four Critical Gaps in Relationship Support</div>
+            <div class="slide-content">
+                <div class="problem-grid">
+                    <div class="problem-category">
+                        <div class="problem-icon">💸</div>
+                        <div class="problem-title">Prohibitive Cost & Access</div>
+                        <div class="problem-description">Therapy sessions cost $150-400/hour, rarely covered by insurance. Financially inaccessible to millions who could benefit from guidance before crisis.</div>
+                    </div>
+                    <div class="problem-category">
+                        <div class="problem-icon">🚫</div>
+                        <div class="problem-title">Stigma Barrier</div>
+                        <div class="problem-description">Seeking help seen as failure, especially for men. Cultural barriers prevent help-seeking until problems become critical.</div>
+                    </div>
+                    <div class="problem-category">
+                        <div class="problem-icon">❄️</div>
+                        <div class="problem-title">Cold Start Problem</div>
+                        <div class="problem-description">First several therapy sessions wasted on inefficient intake—therapist piecing together context instead of providing help.</div>
+                    </div>
+                    <div class="problem-category">
+                        <div class="problem-icon">🤖</div>
+                        <div class="problem-title">Generic Digital Solutions</div>
+                        <div class="problem-description">Existing AI lacks relationship context. Single-user perspective creates incomplete advice that fails to address interactive dynamics.</div>
+                    </div>
+                </div>
+                
+                <div class="solution-preview">
+                    <div class="solution-title">Zepensieve Solution: The Comprehensive Platform</div>
+                    <div>AI-first relationship wellness that builds individual strength, understands couple dynamics, and seamlessly connects to professional care when needed—addressing every gap in the current market.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Competition Matrix -->
+        <div class="slide">
+            <div class="slide-indicator">5/7</div>
+            <div class="slide-header">Creating the "Comprehensive Relationship Wellness" Category</div>
+            <div class="slide-content">
+                <div class="matrix-container">
+                    <div class="axis-label x-axis">Individual Support → Comprehensive Platform</div>
+                    <div class="axis-label y-axis">Point Solution → Full Spectrum Wellness</div>
+                    
+                    <div class="competitor-dot therapy-apps">Therapy<br>Marketplaces</div>
+                    <div class="competitor-dot couples-apps">Couples<br>Apps</div>
+                    <div class="competitor-dot zepensieve">Zepensieve<br>🎯</div>
+                    <div class="competitor-dot generic-ai">Generic<br>AI</div>
+                    <div class="competitor-dot wellness-apps">Wellness<br>Apps</div>
+                </div>
+                
+                <div class="differentiation-box">
+                    <div class="differentiation-title">Our Category-Defining Advantages:</div>
+                    <div><strong>Privacy-preserving relationship intelligence</strong> vs. single-user or no-context solutions • <strong>AI-to-human care pathway</strong> vs. disconnected point solutions • <strong>Proactive wellness focus</strong> vs. crisis intervention only • <strong>Intelligent intake elimination</strong> vs. costly cold-start therapy</div>
+                </div>
+            </div>
+        </div>
 
         <!-- Slide 6: Platform Roadmap -->
         <div class="slide">
             <div class="slide-indicator">6/7</div>
             <div class="slide-header">Patent Filed. Alpha Live. Ready to Build the Essential Relationship Platform.</div>
             <div class="slide-content">
-                <div class="roadmap-overview">
-                    <div class="phase-timeline">
-                        <div class="phase-item current">
-                            <div class="phase-dot">Alpha</div>
-                            <div class="phase-title">AI Coaching Foundation</div>
-                            <div class="phase-description">Privacy-preserving dual-context AI with relationship intelligence</div>
-                        </div>
-                        <div class="phase-item">
-                            <div class="phase-dot">Beta</div>
-                            <div class="phase-title">Product-Led Growth</div>
-                            <div class="phase-description">Scale individual coaching, validate premium relationship features</div>
-                        </div>
-                        <div class="phase-item">
-                            <div class="phase-dot">Launch</div>
-                            <div class="phase-title">Content & Partnerships</div>
-                            <div class="phase-description">Category creation through thought leadership and therapist partnerships</div>
-                        </div>
-                        <div class="phase-item">
-                            <div class="phase-dot">Platform</div>
-                            <div class="phase-title">Marketplace Evolution</div>
-                            <div class="phase-description">Therapist marketplace with intelligent matching and AI-powered intake</div>
-                        </div>
+                <div class="phase-timeline">
+                    <div class="phase-item current">
+                        <div class="phase-dot">Alpha</div>
+                        <div class="phase-title">AI Coaching Foundation</div>
+                        <div class="phase-description">Privacy-preserving dual-context AI with relationship intelligence</div>
                     </div>
-                    
-                    <div class="current-status">
-                        <div class="status-title">Multi-Tier Business Model: Individual → Platform Revenue</div>
-                        <ul class="key-points">
-                            <li><strong>Free Tier:</strong> Individual AI coaching builds user base and context engine for relationship intelligence</li>
-                            <li><strong>BYOK Tier (₹399/month):</strong> Unlimited coaching for power users while maintaining sustainable unit economics</li>
-                            <li><strong>Premium Tier (₹1,999/month):</strong> Relationship-aware features unlock for both partners with single subscription</li>
-                            <li><strong>Platform Revenue:</strong> Marketplace fees + B2B SaaS "Therapist Brief" tool for professional practices</li>
-                        </ul>
+                    <div class="phase-item">
+                        <div class="phase-dot">Beta</div>
+                        <div class="phase-title">Product-Led Growth</div>
+                        <div class="phase-description">Scale individual coaching, validate premium relationship features</div>
                     </div>
+                    <div class="phase-item">
+                        <div class="phase-dot">Launch</div>
+                        <div class="phase-title">Content & Partnerships</div>
+                        <div class="phase-description">Category creation through thought leadership and therapist partnerships</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-dot">Platform</div>
+                        <div class="phase-title">Marketplace Evolution</div>
+                        <div class="phase-description">Therapist marketplace with intelligent matching and AI-powered intake</div>
+                    </div>
+                </div>
+                
+                <div class="current-status">
+                    <div class="status-title">Multi-Tier Business Model: Individual → Platform Revenue</div>
+                    <ul class="key-points">
+                        <li><strong>Free Tier:</strong> Individual AI coaching builds user base and context engine for relationship intelligence</li>
+                        <li><strong>BYOK Tier (₹399/month):</strong> Unlimited coaching for power users while maintaining sustainable unit economics</li>
+                        <li><strong>Premium Tier (₹1,999/month):</strong> Relationship-aware features unlock for both partners with single subscription</li>
+                        <li><strong>Platform Revenue:</strong> Marketplace fees + B2B SaaS "Therapist Brief" tool for professional practices</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -745,32 +894,30 @@
             <div class="slide-indicator">7/7</div>
             <div class="slide-header">$1M to Build India's Essential Relationship Wellness Platform</div>
             <div class="slide-content">
-                <div class="funding-overview">
-                    <div class="funding-amount">$1M</div>
-                    <div class="subtitle">18-Month Runway to Platform Leadership & Series A</div>
-                    
-                    <div class="funding-allocation">
-                        <div class="allocation-item">
-                            <div class="allocation-percentage alloc-platform">50%</div>
-                            <div class="allocation-title">Platform Architecture</div>
-                            <div class="allocation-detail">Privacy-preserving AI infrastructure, therapist marketplace foundation, US patent filing, mobile apps</div>
-                        </div>
-                        <div class="allocation-item">
-                            <div class="allocation-percentage alloc-market">30%</div>
-                            <div class="allocation-title">Category Creation</div>
-                            <div class="allocation-detail">Content marketing, therapist partnerships, comprehensive relationship wellness category establishment</div>
-                        </div>
-                        <div class="allocation-item">
-                            <div class="allocation-percentage alloc-foundation">20%</div>
-                            <div class="allocation-title">Foundation & Safety</div>
-                            <div class="allocation-detail">Privacy infrastructure, crisis intervention protocols, compliance, operational excellence</div>
-                        </div>
+                <div class="funding-amount">$1M</div>
+                <div class="subtitle">18-Month Runway to Platform Leadership & Series A</div>
+                
+                <div class="funding-allocation">
+                    <div class="allocation-item">
+                        <div class="allocation-percentage alloc-platform">50%</div>
+                        <div class="allocation-title">Platform Architecture</div>
+                        <div class="allocation-detail">Privacy-preserving AI infrastructure, therapist marketplace foundation, US patent filing, mobile apps</div>
                     </div>
-                    
-                    <div class="gym-analogy">
-                        <div class="gym-title">Why Accel Atoms?</div>
-                        <div class="gym-text">"We're building the gym, not the hospital—creating relationship strength and awareness before crisis. With Accel's AI expertise and India market leadership, we'll establish the comprehensive relationship wellness category and become the essential platform connecting individuals to the full spectrum of relationship support."</div>
+                    <div class="allocation-item">
+                        <div class="allocation-percentage alloc-market">30%</div>
+                        <div class="allocation-title">Category Creation</div>
+                        <div class="allocation-detail">Content marketing, therapist partnerships, comprehensive relationship wellness category establishment</div>
                     </div>
+                    <div class="allocation-item">
+                        <div class="allocation-percentage alloc-foundation">20%</div>
+                        <div class="allocation-title">Foundation & Safety</div>
+                        <div class="allocation-detail">Privacy infrastructure, crisis intervention protocols, compliance, operational excellence</div>
+                    </div>
+                </div>
+                
+                <div class="gym-analogy">
+                    <div class="gym-title">Why Accel Atoms?</div>
+                    <div class="gym-text">"We're building the gym, not the hospital—creating relationship strength and awareness before crisis. With Accel's AI expertise and India market leadership, we'll establish the comprehensive relationship wellness category and become the essential platform connecting individuals to the full spectrum of relationship support."</div>
                 </div>
             </div>
         </div>
@@ -819,164 +966,3 @@
     </script>
 </body>
 </html>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 2: The Platform Vision -->
-        <div class="slide">
-            <div class="slide-indicator">2/7</div>
-            <div class="slide-header">The Essential Platform for Relationship Wellness: AI-First, Human-Connected</div>
-            <div class="slide-content">
-                <div class="platform-showcase">
-                    <div class="vision-container">
-                        <div class="platform-evolution">
-                            <div class="evolution-stage">
-                                <div class="stage-icon">🤖</div>
-                                <div class="stage-title">AI Coaching</div>
-                                <div class="stage-description">Privacy-preserving relationship intelligence available 24/7</div>
-                            </div>
-                            <div class="evolution-stage">
-                                <div class="stage-icon">🔗</div>
-                                <div class="stage-title">Smart Matching</div>
-                                <div class="stage-description">AI-powered therapist matching based on communication style & needs</div>
-                            </div>
-                            <div class="evolution-stage">
-                                <div class="stage-title">Professional Care</div>
-                                <div class="stage-description">Seamless connection to licensed therapists with intelligent intake</div>
-                            </div>
-                        </div>
-                        
-                        <div class="coaxing-demo">
-                            <div class="demo-header">Core Innovation: Relationship-Aware AI Coaching</div>
-                            <div class="before-after">
-                                <div class="demo-section">
-                                    <div class="demo-label">Generic AI</div>
-                                    <div class="standard-response">"It sounds frustrating when your partner withdraws."</div>
-                                </div>
-                                <div class="vs-divider">vs</div>
-                                <div class="demo-section">
-                                    <div class="demo-label">Zepensieve Intelligence</div>
-                                    <div class="coaxing-response">"Sometimes when people feel overwhelmed, they need space to process emotions. What might help them feel safer to re-engage?"</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="key-points">
-                        <li><strong>Privacy-Preserving Architecture:</strong> Patent-pending system that understands relationship dynamics without compromising individual privacy</li>
-                        <li><strong>Therapeutic Integration:</strong> The gym, not the hospital—building strength and awareness before crisis, connecting to professional care when needed</li>
-                        <li><strong>Intelligent Intake Solution:</strong> Eliminates the costly "cold start" problem in therapy through AI-generated therapist briefs</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3: Market Convergence -->
-        <div class="slide">
-            <div class="slide-indicator">3/7</div>
-            <div class="slide-header">The Inevitable Convergence: Three Market Forces Creating Our Moment</div>
-            <div class="slide-content">
-                <div class="convergence-overview">
-                    <div class="convergence-forces">
-                        <div class="force-item">
-                            <div class="force-icon">🧠</div>
-                            <div class="force-title">AI Normalization</div>
-                            <div class="force-description">ChatGPT eliminated the stigma of "talking to AI"—millions now comfortable seeking AI guidance for personal matters</div>
-                        </div>
-                        <div class="force-item">
-                            <div class="force-icon">💚</div>
-                            <div class="force-title">Wellness Revolution</div>
-                            <div class="force-description">Mental/emotional health now core priority for Millennials & Gen Z—proactive relationship care is mainstream</div>
-                        </div>
-                        <div class="force-item">
-                            <div class="force-icon">📱</div>
-                            <div class="force-title">Telehealth Precedent</div>
-                            <div class="force-description">Pandemic permanently normalized digital healthcare—expectation for convenient, on-demand professional support</div>
-                        </div>
-                    </div>
-                    
-                    <div class="market-stats">
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <span class="stat-number">$27B+</span>
-                                <div class="stat-label">Convergent Market Opportunity</div>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">₹1.42B</span>
-                                <div class="stat-label">India Digital Relationship Market</div>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">10.65%</span>
-                                <div class="stat-label">CAGR Growth Rate</div>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">1.9%</span>
-                                <div class="stat-label">Current Penetration vs 17.9% US</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4: Problem Analysis -->
-        <div class="slide">
-            <div class="slide-indicator">4/7</div>
-            <div class="slide-header">The Market is Failing: Four Critical Gaps in Relationship Support</div>
-            <div class="slide-content">
-                <div class="problem-analysis">
-                    <div class="problem-grid">
-                        <div class="problem-category">
-                            <div class="problem-icon">💸</div>
-                            <div class="problem-title">Prohibitive Cost & Access</div>
-                            <div class="problem-description">Therapy sessions cost $150-400/hour, rarely covered by insurance. Financially inaccessible to millions who could benefit from guidance before crisis.</div>
-                        </div>
-                        <div class="problem-category">
-                            <div class="problem-icon">🚫</div>
-                            <div class="problem-title">Stigma Barrier</div>
-                            <div class="problem-description">Seeking help seen as failure, especially for men. Cultural barriers prevent help-seeking until problems become critical.</div>
-                        </div>
-                        <div class="problem-category">
-                            <div class="problem-icon">❄️</div>
-                            <div class="problem-title">Cold Start Problem</div>
-                            <div class="problem-description">First several therapy sessions wasted on inefficient intake—therapist piecing together context instead of providing help.</div>
-                        </div>
-                        <div class="problem-category">
-                            <div class="problem-icon">🤖</div>
-                            <div class="problem-title">Generic Digital Solutions</div>
-                            <div class="problem-description">Existing AI lacks relationship context. Single-user perspective creates incomplete advice that fails to address interactive dynamics.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="solution-preview">
-                        <div class="solution-title">Zepensieve Solution: The Comprehensive Platform</div>
-                        <div>AI-first relationship wellness that builds individual strength, understands couple dynamics, and seamlessly connects to professional care when needed—addressing every gap in the current market.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 5: Competition Matrix -->
-        <div class="slide">
-            <div class="slide-indicator">5/7</div>
-            <div class="slide-header">Creating the "Comprehensive Relationship Wellness" Category</div>
-            <div class="slide-content">
-                <div class="competition-section">
-                    <div class="matrix-container">
-                        <div class="axis-label x-axis">Individual Support → Comprehensive Platform</div>
-                        <div class="axis-label y-axis">Point Solution → Full Spectrum Wellness</div>
-                        
-                        <div class="competitor-dot therapy-apps">Therapy<br>Marketplaces</div>
-                        <div class="competitor-dot couples-apps">Couples<br>Apps</div>
-                        <div class="competitor-dot zepensieve">Zepensieve<br>🎯</div>
-                        <div class="competitor-dot generic-ai">Generic<br>AI</div>
-                        <div class="competitor-dot wellness-apps">Wellness<br>Apps</div>
-                    </div>
-                    
-                    <div class="differentiation-box">
-                        <div class="differentiation-title">Our Category-Defining Advantages:</div>
-                        <div><strong>Privacy-preserving relationship intelligence</strong> vs. single-user or no-context solutions • <strong>AI-to-human care pathway</strong> vs. disconnected point solutions • <strong>Proactive wellness focus</strong> vs. crisis intervention only • <strong>Intelligent intake elimination</strong> vs. costly cold-start therapy</div>
-                    </div>
-                </div>
-            </div>
-        </div
